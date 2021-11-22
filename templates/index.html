@@ -47,8 +47,8 @@
             <p class="card-text">{{video.desc}}</p>
             <div class="d-flex justify-content-between">
               <p class="card-text"><small class="text-muted">{{video.publishTime}}</small></p>
-              <p class="card-text"> <a href="{{video.url}}" class="btn btn-outline-dark btn-sm">Check here</a></p>
-             
+              <p class="card-text"> <a href="{{video.url}}" target="_blank" class="btn btn-outline-dark btn-sm">Check here</a></p>
+
             </div>
           </div>
         </div>
@@ -59,10 +59,28 @@
 
 
     </div>
+    <nav aria-label="Page navigation example my-3">
+      <ul class="pagination justify-content-end">
+        <li class="page-item">
+          {% if prevPageToken == None %}
+          <a class="page-link disabled" >Previous</a>
+          {% else %} 
+          
+          <a class="page-link" href="/?pageToken={{prevPageToken}}&q={{search_query}}">Previous</a>
+          {% endif %} 
+        </li>
+        <li class="page-item">
+          {% if nextPageToken==None %}
+  
+          <a class="page-link disabled">Next</a>
+          {% else %}
+          
+          <a class="page-link" href="/?pageToken={{nextPageToken}}&q={{search_query}}">Next</a>
+          {% endif %}
+        </li>
+      </ul>
+    </nav>
     {% endif %}
-
-
-
 
 
     <!-- Optional JavaScript; choose one of the two! -->
